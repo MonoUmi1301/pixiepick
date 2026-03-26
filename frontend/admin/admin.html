@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiePick - แผงควบคุมแอดมิน</title>
+    <link rel="stylesheet" href="stylesadmin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>PixiePick - แผงควบคุมแอดมิน</h1>
+            <div class="admin-actions">
+                <a href="../homepage.html" class="btn btn-secondary">กลับหน้าหลัก</a>
+                <button id="logoutBtn" class="btn btn-danger">ออกจากระบบ</button>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- เนื้อหาหลักของหน้า admin -->
+    <main>
+        <section class="admin-controls">
+            <!-- ฟอร์มค้นหาผู้ใช้ -->
+            <div class="search-container">
+                <h2>ค้นหาผู้ใช้</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ค้นหาด้วย ID หรืออีเมล">
+                    <button id="searchBtn" class="btn btn-primary">ค้นหา</button>
+                </div>
+                <!-- ปุ่มแสดงผู้ใช้ทั้งหมด -->
+                <button id="showAllUsers" class="btn btn-secondary">แสดงผู้ใช้ทั้งหมด</button>
+            </div>
+
+            <!-- พื้นที่แสดงข้อมูลผู้ใช้ -->
+            <div class="data-section">
+                <h2>ข้อมูลผู้ใช้</h2>
+                <div id="usersList" class="users-list">
+                    <!-- จะถูกแทนที่ด้วยข้อมูลจาก JavaScript -->
+                    <p class="no-data">ยังไม่มีข้อมูลที่แสดง กรุณาค้นหาหรือกดแสดงผู้ใช้ทั้งหมด</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✅ Modal: ใช้สำหรับแก้ไขข้อมูลผู้ใช้ที่เลือก -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h2>แก้ไขข้อมูลผู้ใช้</h2>
+                <form id="editUserForm">
+                    <!-- เก็บ user ID ซ่อนไว้ -->
+                    <input type="hidden" id="editUserId">
+
+                    <!-- ฟิลด์ต่าง ๆ ของผู้ใช้ -->
+                    <div class="form-group">
+                        <label for="editEmail">อีเมล:</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFirstname">ชื่อ:</label>
+                        <input type="text" id="editFirstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editLastname">นามสกุล:</label>
+                        <input type="text" id="editLastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAge">อายุ:</label>
+                        <input type="number" id="editAge">
+                    </div>
+                    <div class="form-group">
+                        <label for="editGender">เพศ:</label>
+                        <select id="editGender">
+                            <option value="">-- เลือกเพศ --</option>
+                            <option value="ชาย">ชาย</option>
+                            <option value="หญิง">หญิง</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editInterests">ความสนใจ:</label>
+                        <input type="text" id="editInterests">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">คำอธิบาย:</label>
+                        <textarea id="editDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPaymentMethod">วิธีการชำระเงิน:</label>
+                        <select id="editPaymentMethod">
+                            <option value="">-- เลือกวิธีการชำระเงิน --</option>
+                            <option value="cod">ชำระเงินปลายทาง</option>
+                            <option value="bank">โอนผ่านธนาคาร</option>
+                            <option value="credit">บัตรเครดิต</option>
+                        </select>
+                    </div>
+
+                    <!-- ปุ่มบันทึกและยกเลิก -->
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="button" id="closeEditModal" class="btn btn-secondary">ยกเลิก</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ✅ Modal: สำหรับดูประวัติคำสั่งซื้อของผู้ใช้ -->
+        <div id="ordersModal" class="modal">
+            <div class="modal-content">
+                <h2>ประวัติการสั่งซื้อ</h2>
+                <div id="userOrdersList">
+                    <!-- คำสั่งซื้อจะถูกแสดงที่นี่ผ่าน JS -->
+                </div>
+                <button id="closeOrdersModal" class="btn btn-secondary">ปิด</button>
+            </div>
+        </div>
+
+        <!-- ✅ Modal: สำหรับยืนยันการลบผู้ใช้ -->
+        <div id="deleteConfirmModal" class="modal">
+            <div class="modal-content">
+                <h2>ยืนยันการลบข้อมูล</h2>
+                <p>คุณแน่ใจหรือไม่ที่จะลบข้อมูลผู้ใช้นี้?</p>
+                <p>การดำเนินการนี้ไม่สามารถย้อนกลับได้</p>
+                <div class="button-group">
+                    <button id="confirmDelete" class="btn btn-danger">ยืนยันการลบ</button>
+                    <button id="cancelDelete" class="btn btn-secondary">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 PixiePick | ระบบจัดการแอดมิน ✨</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

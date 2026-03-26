@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiePick - ร้านเครื่องเขียนพิกเซล</title>
+    <link rel="stylesheet" href="styleshome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-and-menu">
+            <h1>PixiePick</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#homeSection">หน้าแรก</a></li>
+                    <li><a href="#productSection">สินค้า</a></li>
+                    <li><a href="#cartSection">ตะกร้า</a></li>
+                    <li><a href="#about">เกี่ยวกับ</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="register/register.html" id="signupBtn" class="btn btn-primary">สมัครสมาชิก</a>
+            <a href="login/login.html" id="loginBtn" class="btn btn-secondary">เข้าสู่ระบบ</a>
+            <button id="hamburgerBtn" class="menu-toggle">☰</button>
+           <!-- ปุ่มแอดมิน (แสดงเฉพาะเมื่อแอดมินล็อกอิน) -->
+           <div id="adminButtonContainer" style="display: none;">
+            <a href="admin/admin.html" id="adminButton" class="btn btn-admin">🔧 จัดการระบบ</a>
+        </div>
+        
+
+        </div>
+    </header>
+
+<div id="profileMenu" class="profile-menu">
+    <div id="userInfo">
+        <p>ยินดีต้อนรับ, <span id="userfirstname"></span></p>
+        <button id="userDetails">👤 โปรไฟล์</button>
+        <button id="editProfileBtn">แก้ไขโปรไฟล์</button>
+        <button id="logoutBtn">ออกจากระบบ</button>
+    </div>
+</div>
+
+    <div id="userProfile" style="display: none;">
+        <h2>ข้อมูลโปรไฟล์ของคุณ</h2>
+        <p id="profileName"></p>
+        <p id="profileEmail"></p>
+        <p id="profileAge"></p>
+        <p id="profileGender"></p>
+        <p id="profileInterests"></p>
+        <p id="profileDescription"></p>
+        <p id="profilePay"></p>
+    </div>
+    
+    <main>
+        <!-- หน้าหลัก -->
+        <section class="hero" id="homeSection">
+            <h2>โลกแห่งพิกเซลแฟนตาซี รอคุณอยู่!</h2>
+            <p>ร่ายเวทย์มนตร์แห่งพิกเซล เสกความน่ารักให้วันของคุณ</p>
+            <button onclick="scrollToProducts()">เลือกซื้อเลย!</button>
+        </section>
+        
+        <!-- สินค้า -->
+        <section class="products" id="productSection">
+            <h2>สินค้าของเรา</h2>
+            <div class="product-container" id="productList"></div>
+        </section>
+        
+        <!-- ตะกร้าสินค้า -->
+        <section id="cartSection">
+            <h2>ตะกร้าสินค้าของคุณ</h2>
+            <ul id="cartList"></ul>
+            <div id="totalPriceSection">
+                <p>ราคารวม: <span id="totalPrice">0</span> THB</p>
+                <button id="checkoutButton">ชำระเงิน</button>
+            </div>
+        </section>
+                <!-- เกี่ยวกับเรา -->
+        <section id="about" class="info-section">
+            <h2>เกี่ยวกับ PixiePick</h2>
+            <p>
+                PixiePick ไม่ใช่แค่ร้านเครื่องเขียนธรรมดา  
+                เราคือโลกแห่งพิกเซลแฟนตาซีที่สร้างสรรค์ของใช้สุดน่ารัก! 🎨  
+            </p>
+            <p>
+                จากแรงบันดาลใจของศิลปะพิกเซล  
+                เราผสมผสานไอเดียและความคิดสร้างสรรค์เพื่อให้เครื่องเขียนของคุณมีชีวิต  
+            </p>
+            <p>
+                ไม่ว่าคุณจะเป็นนักวาด นักออกแบบ  
+                หรือแค่หลงรักความน่ารักของพิกเซล  
+                PixiePick พร้อมเสกไอเท็มสุดมหัศจรรย์ให้คุณ ✨  
+            </p>
+        </section>
+
+        <!-- ติดต่อเรา -->
+        <section id="contact" class="info-section">
+            <h2>ติดต่อเรา</h2>
+            <p>
+                📞 โทรศัพท์: 09X-XXX-0166<br>
+                📧 อีเมล: <a href="mailto:support@pixiepick.com">support@pixiepick.com</a><br>
+                💬 Line: <a href="https://line.me/R/ti/p/@PixiePick" target="_blank">@PixiePick</a>
+            </p>
+        </section>
+
+        <!-- Popup ฟอร์มชำระเงิน -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h2>📦 กรอกข้อมูลจัดส่ง</h2>
+            <label>📍 ที่อยู่:</label>
+            <textarea id="shippingAddress" placeholder="กรอกที่อยู่"></textarea>
+
+            <label>💳 วิธีชำระเงิน:</label>
+            <select id="paymentMethod">
+                <option value="cod">ชำระเงินปลายทาง (COD)</option>
+                <option value="bank">โอนผ่านธนาคาร</option>
+                <option value="credit">บัตรเครดิต</option>
+            </select>
+
+            <button id="confirmCheckout">✅ ยืนยันการสั่งซื้อ</button>
+            <button id="closeModal">❌ ปิด</button>
+        </div>
+    </div>
+
+    </main>
+    
+    <footer>
+        <p>© 2025 PixiePick | สร้างสรรค์ไอเท็มแห่งความฝัน ✨</p>
+    </footer>
+    <script src="homepage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="admin/admin.js"></script>
+</body>
+</html>

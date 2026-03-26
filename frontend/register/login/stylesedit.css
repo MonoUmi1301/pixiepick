@@ -1,0 +1,162 @@
+/* 🌈 พื้นหลังธีมทั่วไป */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f9f5ff; 
+    padding: 0;
+    color: #333;
+}
+
+/* 🎀 หัวเว็บ */
+header {
+    background: linear-gradient(90deg, #ff9a8b, #fbd1a2); 
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+/* 🔗 เมนู */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+}
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px; 
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fbd1a2;
+    text-shadow: 2px 2px 5px rgba(255, 154, 139, 0.8);
+}
+
+/* 🧚‍♀️ พื้นที่หลัก */
+main {
+    padding: 30px;
+}
+
+/* 📝 กล่องแก้ไขโปรไฟล์ */
+.edit-profile-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px; /* เพิ่มความโค้งมน */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* เพิ่มเงาให้ดูเด่นขึ้น */
+    max-width: 600px; /* ขยายขนาด */
+    margin: 0 auto;
+}
+
+/* 🖌️ หัวข้อ */
+h2 {
+    text-align: center;
+    font-size: 26px; /* ขยายขนาดเล็กน้อย */
+    color: #ff7a7a;
+}
+
+/* 📜 ฟอร์ม */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* เพิ่มระยะห่างระหว่างฟิลด์ */
+}
+
+form label {
+    font-size: 16px; /* เพิ่มขนาดตัวหนังสือ */
+    font-weight: bold;
+    color: #333;
+}
+
+form input, form select, form textarea {
+    padding: 12px;
+    font-size: 16px; 
+    background: #fffdfd;
+    border: 1px solid #ff9a8b;
+    border-radius: 10px; 
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: #ff7a7a;
+    box-shadow: 0 0 8px rgba(255, 122, 122, 0.4); 
+}
+
+/* 🔘 ปุ่ม */
+form button {
+    padding: 12px;
+    background-color: #ff7a7a;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #ff9a8b;
+    transform: scale(1.05); 
+}
+
+/* ⚪ ปุ่มยกเลิก */
+button#cancelBtn {
+    padding: 12px;
+    background-color: #ccc;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button#cancelBtn:hover {
+    background-color: #bbb;
+}
+
+/* 🌟 วิธีการชำระเงิน - Dropdown */
+form select {
+    padding: 12px; 
+    font-size: 14px
+    font-family: 'Press Start 2P', cursive;
+    color: #333;
+    background-color: #ffefef;
+    border: 2px solid #ff9a8b;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(252, 123, 123, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    height: auto; 
+    line-height: 1.6; 
+    overflow: visible;
+}
+
+form select:hover {
+    background-color: #ffdedb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+form select:focus {
+    outline: none;
+    border-color: #ff7a7a;
+    box-shadow: 0 0 8px rgba(255, 122, 122, 0.5);
+}

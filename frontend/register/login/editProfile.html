@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขโปรไฟล์ - PixiePick</title>
+    <link rel="stylesheet" href="stylesedit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-and-menu">
+            <h1>PixiePick</h1>
+            <nav>
+                <ul>
+                    <li><a href="../homepage.html">หน้าหลัก</a></li>
+                    <li><a href="../homepage.html#productSection">สินค้า</a></li>
+                    <li><a href="../homepage.html#cartSection">ตะกร้า</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="edit-profile-container">
+            <h2>แก้ไขโปรไฟล์</h2>
+            <form id="editProfileForm">
+                <label for="firstname">ชื่อจริง:</label>
+                <input type="text" id="firstname" name="firstname" required>
+                <label for="lastname">นามสกุล:</label>
+                <input type="text" id="lastname" name="lastname" required>
+                <label for="email">อีเมล:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="age">อายุ:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label>เพศ:</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">ชาย</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <label for="female">หญิง</label>
+                </div>
+                <div>
+                    <input type="radio" id="other" name="gender" value="other" required>
+                    <label for="other">อื่นๆ</label>
+                </div>
+
+                <label for="interests">ความสนใจ:</label>
+                <input type="text" id="interests" name="interests">
+
+                <label for="description">คำบรรยาย:</label>
+                <textarea id="description" name="description"></textarea>
+
+                <label for="paymentMethod">🌟 วิธีการชำระเงิน:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">-- กรุณาเลือก --</option>
+                    <option value="creditCard">💳 บัตรเครดิต</option>
+                    <option value="paypal">🌐 PayPal</option>
+                    <option value="bankTransfer">🏦 โอนผ่านธนาคาร</option>
+                    <option value="cod">📦 เก็บเงินปลายทาง</option>
+                </select>
+
+
+                <button type="submit">บันทึกการเปลี่ยนแปลง</button>
+            </form>
+            <button id="cancelBtn">ยกเลิก</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 PixiePick | สร้างสรรค์ไอเท็มแห่งความฝัน ✨</p>
+    </footer>
+
+    <script src="../config.js"></script>
+    <script src="editProfile.js"></script>
+</body>
+</html>
